@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+public class Circle {
+
+    // Attribute to store the radius
+    private double radius;
+
+    // Default Constructor
+    public Circle() {
+        this.radius = 1.0; // Default radius is set to 1.0
+    }
+
+    // Parameterized Constructor
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Method to calculate area of the circle
+    public double getArea() {
+        return Math.PI * Math.pow(radius, 2); // Area = π * r^2
+    }
+
+    // Method to calculate circumference of the circle
+    public double getCircumference() {
+        return 2 * Math.PI * radius; // Circumference = 2 * π * r
+    }
+
+    // Method to calculate diameter of the circle
+    public double getDiameter() {
+        return 2 * radius; // Diameter = 2 * r
+    }
+
+    // Getter for radius
+    public double getRadius() {
+        return radius;
+    }
+
+    // Setter for radius
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt user for a radius to create a circle using the parameterized constructor
+        System.out.print("Enter the radius of the circle: ");
+        double userRadius = scanner.nextDouble();
+
+        // Create a Circle object using the parameterized constructor
+        Circle myCircle = new Circle(userRadius);
+
+        // Display results for the created Circle
+        System.out.println("\nCircle with radius " + myCircle.getRadius() + ":");
+        System.out.println("Area: " + myCircle.getArea());
+        System.out.println("Circumference: " + myCircle.getCircumference());
+        System.out.println("Diameter: " + myCircle.getDiameter());
+
+        // Create a Circle object using the default constructor
+        Circle defaultCircle = new Circle(); // This uses the default radius of 1.0
+
+        // Display results for the default Circle
+        System.out.println("\nDefault Circle with radius " + defaultCircle.getRadius() + ":");
+        System.out.println("Area: " + defaultCircle.getArea());
+        System.out.println("Circumference: " + defaultCircle.getCircumference());
+        System.out.println("Diameter: " + defaultCircle.getDiameter());
+
+        // Modify the radius of the Circle object
+        System.out.print("\nEnter a new radius to modify the circle: ");
+        double newRadius = scanner.nextDouble();
+        myCircle.setRadius(newRadius);
+
+        // Display the updated circle's properties
+        System.out.println("\nUpdated Circle with radius " + myCircle.getRadius() + ":");
+        System.out.println("Area: " + myCircle.getArea());
+        System.out.println("Circumference: " + myCircle.getCircumference());
+        System.out.println("Diameter: " + myCircle.getDiameter());
+
+        // Create an array of radii and calculate area and circumference for each
+        double[] radii = {1.0, 2.5, 4.0, 7.5};
+        System.out.println("\nCalculations for multiple circles:");
+
+        for (double radius : radii) {
+            Circle tempCircle = new Circle(radius);
+            System.out.println("For radius " + radius + ":");
+            System.out.println("Area: " + tempCircle.getArea());
+            System.out.println("Circumference: " + tempCircle.getCircumference());
+        }
+
+        scanner.close();
+    }
+}
